@@ -16,6 +16,7 @@
 .high-score:hover {
     transform: scale(1.030);
 }
+
 .high-score-marker {
     background-color: rgb(108, 34, 226);
     color: white;
