@@ -57,7 +57,7 @@ const getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //When there is no more questions we go to the end page and we store the score in localStorage
         localStorage.setItem('mostRecentScore', score);
-        return window.location.assign('/end.html');
+        return window.location.assign('end.html');
     }
     questionCounter++;
 
