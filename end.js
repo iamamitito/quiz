@@ -6,7 +6,7 @@ const finalScore = document.getElementById('final-score');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 
-// if item is empty, it's just and empty array
+// If item is empty, it's just and empty array
 const highScores = localStorage.getItem('highScores') ? JSON.parse(localStorage.getItem("highScores")) : [];
 
 const MAX_HIGH_SCORES = 5;
@@ -17,7 +17,7 @@ username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value;
 })
 
-// here is the function that saves the score
+// Here is the function that saves the score
 saveScoreBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
