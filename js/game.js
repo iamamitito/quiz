@@ -19,7 +19,6 @@ let questions = [];
 fetch("https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple").then(res => {
     return res.json();
 }).then(loadedQuestions => {
-    console.log(loadedQuestions.results);
     questions = loadedQuestions.results.map(loadedQuestion => {
         let fixedLoadedQuestion = loadedQuestion.question.replace(/&quot;/g,'"').replace(/&#039;/g, "'");
         const formattedQuestion = {
@@ -94,11 +93,19 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = Number(selectedChoice.dataset['number']);
+
+
         const classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect';
-        // Here we add the class to the box, if the answer is correct or incorrect
+        // Here we add the class to the box if the answer is correct or incorrect
         selectedChoice.parentElement.classList.add(classToApply);
+
+        // This adds the correct class to the correct choice
+        choices[currentQuestion.answer - 1].parentElement.classList.add('correct');
+        
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
+            choices[currentQuestion.answer -1].parentElement.classList.remove('correct');
+
 
             if (classToApply === 'correct') {
                 incrementScore(CORRECT_BONUS);
