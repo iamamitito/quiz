@@ -13,21 +13,34 @@ let availableQuestions = [];
 
 let questions = [];
 
-// fetching questions from json file, game fucntion only works after promise's response.
-fetch("questions.json").then(res => {
-    console.log(res);
+// fetching questions from API, game only works after promise's response.
+fetch("https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple").then(res => {
     return res.json();
 }).then(loadedQuestions => {
-    console.log(loadedQuestions);
-    questions = loadedQuestions;
+    console.log(loadedQuestions.results);
+    questions = loadedQuestions.results.map(loadedQuestion => {
+        let fixedLoadedQuestion = loadedQuestion.question.replace(/&quot;/g,'"').replace(/&#039;/g, "'");
+        const formattedQuestion = {
+            question: fixedLoadedQuestion
+        };
+        const answerChoices = [...loadedQuestion.incorrect_answers];
+        formattedQuestion.answer = Math.floor(Math.random()* 3) + 1;
+        answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestion.correct_answer);
+        answerChoices.forEach((choice, index) => {
+            formattedQuestion["choice" + (index+1)] = choice.replace(/&quot;/g,'"').replace(/&#039;/g, "'");
+        })
+        return formattedQuestion;
+    });
+
     startGame();
+
 }).catch(error => {
     alert(error);
 });
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 10;
 
 const startGame = () => {
     questionCounter = 0;
