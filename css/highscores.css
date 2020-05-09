@@ -1,0 +1,26 @@
+#high-scores-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 4rem;
+}
+.high-score {
+    font-size: 1.5rem;
+    border: 0.1rem solid rgb(108, 34, 226, 0.25);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4rem;
+    margin-bottom: 0.5rem;
+    color:rgb(108, 34, 226);
+    width: 100%;
+}
+.high-score:hover {
+    transform: scale(1.030);
+}
+.high-score-marker {
+    background-color: rgb(108, 34, 226);
+    color: white;
+    float: right;
+    margin-left: 2rem;
+    border-radius: 3rem;
+    padding: 0.3rem 0.6rem;
+}

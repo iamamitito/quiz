@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="/css/app.css">
     <title>Congrats!</title>
 </head>
+
 <body>
     <div class="container">
         <div id="end" class="flex-center flex-column">
+            <h3 class="score-title">Your Score</h3>
             <h1 id="final-score"></h1>
             <form>
                 <input type="text" name="username" id="username" placeholder="username">
@@ -19,6 +22,11 @@
             <a class="btn" href="/">Go Home</a>
         </div>
     </div>
+    <div class="copyright">
+        &copy; by iamamitito. Powered by
+        <a href="https://opentdb.com/api_config.php" target="_blank" class="link">Open Trivia Database</a>.
+    </div>
     <script src="end.js"></script>
 </body>
+
 </html>
