@@ -30,7 +30,7 @@ saveScoreBtn.addEventListener('click', (e) => {
     highScores.splice(MAX_HIGH_SCORES);
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
-    window.location.assign('home.html');
+    window.location.assign('index.html');
     console.log(highScores);
 
 });
