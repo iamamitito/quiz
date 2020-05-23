@@ -13,7 +13,7 @@ body {
   background-color: rgb(108, 34, 226);
 }
 
-.index-title{
+.index-title {
   color: rgb(236, 236, 236);
 }
 
@@ -51,7 +51,7 @@ h3 {
 
 .container {
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,6 +148,7 @@ input::placeholder {
   margin-bottom: 3rem;
   font-size: 1.5rem;
 }
-#final-score, .score-title {
+#final-score,
+.score-title {
   color: rgb(236, 236, 236);
 }
