@@ -35,7 +35,6 @@ body {
   background-color: rgb(212, 64, 64);
 }
 
-
 /* HUD */
 
 #hud {
@@ -72,10 +71,10 @@ body {
 #spinner {
   border: 1.5rem solid white;
   border-radius: 50%;
-  border-top:1.5rem solid rgb(108, 34, 226);
+  border-top: 1.5rem solid rgb(108, 34, 226);
   width: 12rem;
   height: 12rem;
-  animation: spin 2s linear infinite;
+  animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
