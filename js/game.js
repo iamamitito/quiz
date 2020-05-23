@@ -16,28 +16,33 @@ let availableQuestions = [];
 let questions = [];
 
 // fetching questions from API, game only works after promise's response.
-fetch("https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple").then(res => {
-    return res.json();
-}).then(loadedQuestions => {
-    questions = loadedQuestions.results.map(loadedQuestion => {
-        let fixedLoadedQuestion = loadedQuestion.question.replace(/&quot;/g,'"').replace(/&#039;/g, "'");
-        const formattedQuestion = {
-            question: fixedLoadedQuestion
-        };
-        const answerChoices = [...loadedQuestion.incorrect_answers];
-        formattedQuestion.answer = Math.floor(Math.random()* 3) + 1;
-        answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestion.correct_answer);
-        answerChoices.forEach((choice, index) => {
-            formattedQuestion["choice" + (index+1)] = choice.replace(/&quot;/g,'"').replace(/&#039;/g, "'");
-        })
-        return formattedQuestion;
-    });
+async function getQuestions() {
+    try {
+        let res = await fetch("https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple");
+        let loadedQuestions = await res.json();
+        questions = loadedQuestions.results.map(loadedQuestion => {
+            let fixedLoadedQuestion = loadedQuestion.question.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+            const formattedQuestion = {
+                question: fixedLoadedQuestion
+            };
+            const answerChoices = [...loadedQuestion.incorrect_answers];
+            formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+            answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestion.correct_answer);
+            answerChoices.forEach((choice, index) => {
+                formattedQuestion["choice" + (index + 1)] = choice.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+            })
+            return formattedQuestion;
+        });
+        startGame();
 
-    startGame();
+    } catch (error) {
+        alert(error);
+    }
 
-}).catch(error => {
-    alert(error);
-});
+}
+
+getQuestions();
+
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
@@ -62,7 +67,7 @@ const getNewQuestion = () => {
 
     // we update the progess to the UI
     progressText.innerText = `Question ${questionCounter}/ ${MAX_QUESTIONS}`;
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`;
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
     // This gives a random number between 0 and the number of questions
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
 
@@ -101,10 +106,10 @@ choices.forEach(choice => {
 
         // This adds the correct class to the correct choice
         choices[currentQuestion.answer - 1].parentElement.classList.add('correct');
-        
+
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
-            choices[currentQuestion.answer -1].parentElement.classList.remove('correct');
+            choices[currentQuestion.answer - 1].parentElement.classList.remove('correct');
 
 
             if (classToApply === 'correct') {
@@ -112,7 +117,7 @@ choices.forEach(choice => {
             }
             getNewQuestion();
         }, 1000)
-        
+
 
     });
 });
