@@ -1,7 +1,10 @@
 body {
   background-color: rgb(236, 236, 236);
 }
-
+.question {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
 .choice-container {
   display: flex;
   margin-bottom: 1rem;
