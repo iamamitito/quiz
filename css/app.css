@@ -3,6 +3,10 @@
 :root {
   font-size: 62.5%;
 }
+.question {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
 
 * {
   box-sizing: border-box;
@@ -17,7 +21,7 @@ body {
 
 .index-title {
   color: #fff;
-  font-size: 80px;
+  font-size: 8rem;
   font-family: "Archivo Black", sans-serif;
 }
 
