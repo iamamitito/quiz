@@ -3,26 +3,21 @@ body {
 }
 .choice-container {
   display: flex;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   width: 100%;
   font-size: 1.8rem;
-  border: 0.1rem solid rgb(108, 34, 226, 0.25);
-  background-color: rgb(108, 34, 226);
+  background-color: #7753fb;
   padding: 0.5rem;
   border-radius: 4rem;
+  text-align: center;
 }
 
 .choice-container:hover {
   cursor: pointer;
-  transform: translateY(-0.15rem);
+  transform: translateY(-0.2rem);
   transition: transform 150ms;
 }
-.choice-prefix {
-  padding: 1.5rem 2rem;
-  background-color: white;
-  border-radius: 50%;
-  color: rgb(108, 34, 226);
-}
+
 .choice-text {
   padding: 1.5rem;
   width: 100%;
@@ -54,7 +49,7 @@ body {
 #progress-bar {
   width: 15rem;
   height: 3rem;
-  border: 0.3rem solid rgb(108, 34, 226);
+  border: 0.3rem solid #7753fb;
   margin-top: 1.5rem;
   border-radius: 3rem;
 }
@@ -62,7 +57,7 @@ body {
 #progress-bar-full {
   height: 2.4rem;
   width: 0%;
-  background-color: rgb(108, 34, 226);
+  background-color: #7753fb;
   border-radius: 3rem;
 }
 
@@ -71,10 +66,10 @@ body {
 #spinner {
   border: 1.5rem solid white;
   border-radius: 50%;
-  border-top: 1.5rem solid rgb(108, 34, 226);
+  border-top: 1.5rem solid #7753fb;
   width: 12rem;
   height: 12rem;
-  animation: spin 1.5s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
